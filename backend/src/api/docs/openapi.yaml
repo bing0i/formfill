@@ -1,0 +1,92 @@
+openapi: 3.0.0
+info:
+  title: FormFill API
+  version: 1.0.0
+  description: API for saving and loading encrypted form data
+servers:
+  - url: http://localhost:3001
+paths:
+  /save:
+    post:
+      summary: Save form data
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                firstName:
+                  type: string
+                email:
+                  type: string
+                expiryDays:
+                  type: integer
+                  description: Days until expiry (optional, default 7)
+              required:
+                - firstName
+                - email
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  success:
+                    type: boolean
+        "400":
+          description: Invalid input
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
+        "500":
+          description: Server error
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
+  /load:
+    get:
+      summary: Load latest form data
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: object
+                    properties:
+                      firstName:
+                        type: string
+                      email:
+                        type: string
+        "404":
+          description: No valid form data found
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
+        "500":
+          description: Server error
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
