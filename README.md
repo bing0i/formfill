@@ -98,4 +98,6 @@ See `backend/README.md` and `frontend/README.md` for more details.
 7. Form responsiveness:
 ![image](https://github.com/user-attachments/assets/004a903a-4682-4239-86e4-36c340f2af13)
 ![image](https://github.com/user-attachments/assets/91771d47-be5f-4216-b780-bcf672b4ff66)
-
+8. Save endpoint validations:
+![image](https://github.com/user-attachments/assets/095007f1-8867-4a2c-be85-b7bc046986e6)
+![image](https://github.com/user-attachments/assets/c31b3041-d613-4ff0-9e15-008ed00dbacc)
