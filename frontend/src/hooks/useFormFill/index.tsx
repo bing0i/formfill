@@ -75,7 +75,7 @@ export function useFormFill() {
 
       console.info("Save success");
     } catch (err) {
-      setMessage("Something went wrong!");
+      setMessage((err as Error).message);
       setMessageType("error");
 
       console.error("Error", err);
@@ -95,6 +95,10 @@ export function useFormFill() {
       const text = await res.text();
       const data = JSON.parse(text);
 
+      if (res.status === 404) {
+        throw new Error("No valid form data found.");
+      }
+
       if (!res.ok) {
         throw new Error("Something went wrong!");
       }
@@ -112,7 +116,7 @@ export function useFormFill() {
 
       console.info("Load success");
     } catch (err) {
-      setMessage("Something went wrong!");
+      setMessage((err as Error).message);
       setMessageType("error");
 
       console.error("Error", err);
